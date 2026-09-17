@@ -109,6 +109,11 @@ func runTests() {
   check(
     migrated.chapter == 2 && migrated.embers == 77 && migrated.lostEmbers == 0,
     "older saves migrate with safe defaults")
+  g.state = "play"
+  g.showPause()
+  g.pressed = [46]
+  g.input()
+  check(g.state == "pause" && g.previousState == "play" && !g.audio.enabled, "pause sound toggle")
   print("ALL \(checks) GAMEPLAY CHECKS PASSED")
   let preview = SKView(frame: NSRect(x: 0, y: 0, width: 1280, height: 800))
   preview.ignoresSiblingOrder = false

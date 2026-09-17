@@ -4,7 +4,14 @@ import SpriteKit
 extension GameScene {
   func boonCount(_ n: Int) -> Int { save.boons.filter { $0 == n }.count }
   func input() {
-    if edge(46) { audio.toggle() }
+    if edge(46) {
+      audio.toggle()
+      if state == "pause" {
+        let resumeState = previousState
+        state = resumeState
+        showPause()
+      }
+    }
     if edge(3) { view?.window?.toggleFullScreen(nil) }
     if state == "title" {
       if edge(35) {
