@@ -1,0 +1,4 @@
+.DS_Store
+The Last Ember.app/
+*.dSYM/
+.build/
